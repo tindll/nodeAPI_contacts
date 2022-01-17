@@ -100,7 +100,7 @@ router.get('/contacts', middleware.verify, (req, res) => {
 router.get('/contacts/:id', middleware.verify, (req, res) => {
     try {
         var { id } =req.params
-        
+        id = mongoose.Types.ObjectId(id)
         User.find({ "contacts._id": id, "_id": 0})
             .exec(
                 function(err,info) {
