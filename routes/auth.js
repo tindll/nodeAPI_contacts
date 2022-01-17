@@ -107,7 +107,6 @@ router.get('/contacts/:id', middleware.verify, (req, res) => {
                   if (err) res.status(500).send(err);
                   else res.json(info);
                 });
-
     } catch (error) {
         console.log(error);
         res.send("An error occured");
