@@ -103,7 +103,7 @@ router.get('/contacts/:id', middleware.verify, (req, res) => {
         id = mongoose.Types.ObjectId(id)
         console.log(id)
         console.log(typeof id)
-        User.find({ "contacts._id": id, "_id": 0})
+        User.findById({id})
             .exec(
                 function(err,info) {
                   if (err) res.status(500).send(err);
