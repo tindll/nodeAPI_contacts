@@ -11,5 +11,15 @@ app.use('/api/auth',authR)
 
 mongoose.connect(dbURI , {useNewUrlParser: true, useUnifiedTopology: true})
 const db = mongoose.connection
+
+// const schema = new mongoose.Schema({ name: 'string', size: 'string' });
+// const Tank = mongoose.model('Tank', schema);
+// Tank.create({ size: 'small' }, function (err, small) {
+//     if (err) return handleError(err);
+//     else {console.log("added")}
+//   });
+
 db.on("error", (err)=>{console.error(err)})
 db.once("open", () => {console.log("DB started successfully")})
+
+app.listen(process.env.PORT, () => console.log("live, i think"))
