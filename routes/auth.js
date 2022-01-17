@@ -101,7 +101,7 @@ router.get('/contacts/:id', middleware.verify, (req, res) => {
     try {
         var objID = jwt_decode(req.headers.authorization).data
         const {id} =req.params
-        User.find({"_id": objID, "contacts._id": id})
+        User.find({"_id": objID, "contacts._id": id},{'contacts.$': 1})
             .exec(
                 function(err,info) {
                   if (err) res.status(500).send(err);
