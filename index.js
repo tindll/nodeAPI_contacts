@@ -22,4 +22,5 @@ const db = mongoose.connection
 db.on("error", (err)=>{console.error(err)})
 db.once("open", () => {console.log("DB started successfully")})
 
-app.listen(process.env.PORT, () => console.log("live, i think"))
+const PORT = process.env.PORT || 3000;
+app.listen(process.env.PORT, () => console.log("live on port "+ PORT))
