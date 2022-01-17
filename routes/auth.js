@@ -99,10 +99,11 @@ router.get('/contacts', middleware.verify, (req, res) => {
 
 router.get('/contacts/:id', middleware.verify, (req, res) => {
     try {
-        var { id } =req.params
+        var objID = jwt_decode(req.headers.authorization).data
+		const {id} = req.params
         console.log(id)
         console.log(typeof id)
-        User.findOne({'_id':id})
+        User.findOne({'_id':objID, 'contacts._id':id})
             .exec(
                 function(err,info) {
                   if (err) res.status(500).send(err);
